@@ -7,13 +7,13 @@ def get_all_todos() -> list[Todo]:
 
 def get_active_todos() -> list[Todo]:
     return db.session.execute(
-        db.select(Todo).where(Todo.done == False).order_by(Todo.id.desc())
+        db.select(Todo).where(Todo.done.is_(False)).order_by(Todo.id.desc())
     ).scalars().all()
 
 
 def get_completed_todos() -> list[Todo]:
     return db.session.execute(
-        db.select(Todo).where(Todo.done == True).order_by(Todo.id.desc())
+        db.select(Todo).where(Todo.done.is_(True)).order_by(Todo.id.desc())
     ).scalars().all()
 
 
