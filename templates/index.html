@@ -198,6 +198,24 @@
         transform: translate(1px, 1px);
       }
 
+      /* Section heading */
+      .section-title {
+        font-size: 0.6rem;
+        color: #005c18;
+        letter-spacing: 1px;
+        margin-bottom: 12px;
+        margin-top: 32px;
+        border-bottom: 2px solid #005c18;
+        padding-bottom: 8px;
+      }
+
+      /* Completed item overrides */
+      #completed-list li.todo-item {
+        border-color: #005c18;
+        box-shadow: 4px 4px 0 #002a0a;
+        opacity: 0.7;
+      }
+
       /* Scanline overlay */
       body::after {
         content: "";
@@ -236,9 +254,15 @@
         <button type="submit" class="btn-add">ADD</button>
       </form>
 
-      <!-- Todo List -->
+      <!-- Active Todo List -->
       <ul id="todo-list">
         {% include "partials/todo_list.html" %}
+      </ul>
+
+      <!-- Completed Tasks -->
+      <p class="section-title">► COMPLETED ◄</p>
+      <ul id="completed-list">
+        {% include "partials/completed_list.html" %}
       </ul>
     </div>
   </body>

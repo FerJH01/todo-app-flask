@@ -4,14 +4,10 @@
     hx-patch="/todos/{{ todo.id }}/toggle"
     hx-target="#todo-list"
     hx-swap="innerHTML"
-    class="btn-toggle {% if todo.done %}done{% endif %}"
+    class="btn-toggle"
     title="Toggle complete"
-  >
-    {% if todo.done %}✓{% endif %}
-  </button>
-  <span class="todo-title {% if todo.done %}done{% endif %}"
-    >{{ todo.title }}</span
-  >
+  ></button>
+  <span class="todo-title">{{ todo.title }}</span>
   <button
     hx-delete="/todos/{{ todo.id }}"
     hx-target="#todo-list"
@@ -26,3 +22,7 @@
 {% else %}
 <li class="empty">[ NO TASKS YET ]</li>
 {% endfor %}
+
+<ul id="completed-list" hx-swap-oob="innerHTML">
+  {% include "partials/completed_list.html" %}
+</ul>
