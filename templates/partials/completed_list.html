@@ -1,0 +1,24 @@
+{% for todo in completed %}
+<li class="todo-item">
+  <button
+    hx-patch="/todos/{{ todo.id }}/toggle"
+    hx-target="#todo-list"
+    hx-swap="innerHTML"
+    class="btn-toggle done"
+    title="Mark as pending"
+  >✓</button>
+  <span class="todo-title done">{{ todo.title }}</span>
+  <button
+    hx-delete="/todos/{{ todo.id }}"
+    hx-target="#todo-list"
+    hx-swap="innerHTML"
+    hx-confirm="Delete this task?"
+    class="btn-delete"
+    title="Delete"
+  >
+    ✕
+  </button>
+</li>
+{% else %}
+<li class="empty">[ NO COMPLETED TASKS ]</li>
+{% endfor %}
