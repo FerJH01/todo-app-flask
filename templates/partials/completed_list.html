@@ -1,13 +1,15 @@
-{% for todo in todos %}
+{% for todo in completed %}
 <li class="todo-item">
   <button
     hx-patch="/todos/{{ todo.id }}/toggle"
     hx-target="#todo-list"
     hx-swap="innerHTML"
-    class="btn-toggle"
-    title="Toggle complete"
-  ></button>
-  <span class="todo-title">{{ todo.title }}</span>
+    class="btn-toggle done"
+    title="Mark as pending"
+  >
+    ✓
+  </button>
+  <span class="todo-title done">{{ todo.title }}</span>
   <button
     hx-delete="/todos/{{ todo.id }}"
     hx-target="#todo-list"
@@ -20,9 +22,5 @@
   </button>
 </li>
 {% else %}
-<li class="empty">[ NO TASKS YET ]</li>
+<li class="empty">[ NO COMPLETED TASKS ]</li>
 {% endfor %}
-
-<ul id="completed-list" hx-swap-oob="innerHTML">
-  {% include "partials/completed_list.html" %}
-</ul>

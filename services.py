@@ -5,6 +5,18 @@ def get_all_todos() -> list[Todo]:
     return db.session.execute(db.select(Todo).order_by(Todo.id.desc())).scalars().all()
 
 
+def get_active_todos() -> list[Todo]:
+    return db.session.execute(
+        db.select(Todo).where(Todo.done.is_(False)).order_by(Todo.id.desc())
+    ).scalars().all()
+
+
+def get_completed_todos() -> list[Todo]:
+    return db.session.execute(
+        db.select(Todo).where(Todo.done.is_(True)).order_by(Todo.id.desc())
+    ).scalars().all()
+
+
 def create_todo(title: str) -> Todo:
     todo = Todo(title=title)
     db.session.add(todo)
