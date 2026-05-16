@@ -1,3 +1,5 @@
+_//This is a test project to check on VS Agents view features.
+_
 # ✅ To-Do App — Flask + HTMX
 
 A lightweight, full-stack To-Do application built with **Python Flask**, **SQLAlchemy ORM**, and an **HTMX** frontend. Tasks can be added, completed, and deleted without any page reloads.
