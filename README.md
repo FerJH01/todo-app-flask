@@ -1,17 +1,15 @@
-_//This is a test project to check on VS Agents view features.
-_
 # ✅ To-Do App — Flask + HTMX
 
-A lightweight, full-stack To-Do application built with **Python Flask**, **SQLAlchemy ORM**, and an **HTMX** frontend. Tasks can be added, completed, and deleted without any page reloads.
+A lightweight, full-stack To-Do application built with **Python Flask**, **SQLAlchemy ORM**, and an **HTMX** frontend. Tasks can be added, toggled, and deleted without any page reloads. Active and completed tasks are displayed in separate sections, updated dynamically via HTMX out-of-band swaps.
 
 ---
 
 ## 🛠 Tech Stack
 
-| Layer | Technology |
-|---|---|
-| Backend | Python 3 + Flask |
-| ORM | Flask-SQLAlchemy (SQLite) |
+| Layer    | Technology                |
+| -------- | ------------------------- |
+| Backend  | Python 3 + Flask          |
+| ORM      | Flask-SQLAlchemy (SQLite) |
 | Frontend | HTMX + Tailwind CSS (CDN) |
 
 ---
@@ -27,6 +25,8 @@ A lightweight, full-stack To-Do application built with **Python Flask**, **SQLAl
 │   ├── index.html                # Main page
 │   └── partials/
 │       └── todo_list.html        # HTMX partial for todo items
+├── tests/
+│   └── test_app.py               # Pytest test suite (services + routes)
 └── .venv/                        # Virtual environment (not committed)
 ```
 
@@ -67,10 +67,24 @@ Open your browser at **http://localhost:5000**
 
 ## ⚙️ Features
 
-- ➕ **Add tasks** — type a task and press *Add*
+- ➕ **Add tasks** — type a task and press _Add_
 - ✅ **Toggle complete** — click the circle button to mark done/undone
 - 🗑️ **Delete tasks** — hover a task and click the trash icon
-- ⚡ **No page reloads** — all interactions are handled by HTMX
+- 📂 **Two sections** — active and completed tasks displayed separately
+- ⚡ **No page reloads** — all interactions handled by HTMX (including OOB swaps)
+
+---
+
+## 🧪 Testing
+
+The project includes a pytest suite covering both the service layer and all HTTP routes.
+
+```bash
+pip install pytest
+pytest tests/
+```
+
+Tests use an in-memory SQLite database for full isolation.
 
 ---
 
